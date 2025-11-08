@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8rb3k0k54c6m"]
+
+[ext_resource type="Script" uid="uid://nyp4sgepucwk" path="res://Player/Scripts/player.gd" id="1_gb6lh"]
+[ext_resource type="Texture2D" uid="uid://cvb36dh8lr6h2" path="res://Player/baseLineIgs1.png" id="2_hydb7"]
+[ext_resource type="Texture2D" uid="uid://lsjd6du74222" path="res://icon.svg" id="2_pj2xp"]
+[ext_resource type="Texture2D" uid="uid://bwnopx7mikby4" path="res://train_car.png" id="3_pj2xp"]
+[ext_resource type="Script" uid="uid://cs55w3q40wrq4" path="res://Player/Scripts/test.gd" id="4_hydb7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hydb7"]
+atlas = ExtResource("2_hydb7")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w48mv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hydb7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hydb7"]
+size = Vector2(48, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys3fu"]
+size = Vector2(45, 188.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0f6p"]
+size = Vector2(70, 73)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hydb7"]
+a = Vector2(-0.613595, 0.893219)
+b = Vector2(175.641, 0.446609)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hydb7"]
+radius = 72.8629
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+top_level = true
+position = Vector2(77, 407)
+script = ExtResource("1_gb6lh")
+metadata/Player_Health = 100.0
+metadata/Player_Mana = 100.0
+metadata/Money = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_w48mv")
+
+[node name="PlayerPos" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 88.5)
+shape = SubResource("RectangleShape2D_hydb7")
+
+[node name="playerHitboxes" type="CharacterBody2D" parent="Player"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="playerHitbox" type="CollisionShape2D" parent="Player/playerHitboxes"]
+position = Vector2(-0.5, 4.25)
+shape = SubResource("RectangleShape2D_ys3fu")
+
+[node name="playerHitbox2" type="CollisionShape2D" parent="Player/playerHitboxes"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_e0f6p")
+
+[node name="map" type="Sprite2D" parent="."]
+position = Vector2(576, 327)
+scale = Vector2(0.598958, 0.598148)
+texture = ExtResource("3_pj2xp")
+
+[node name="Boundry" type="StaticBody2D" parent="map"]
+position = Vector2(-956.661, 524.954)
+scale = Vector2(10.8838, 7.48669)
+
+[node name="top" type="CollisionShape2D" parent="map/Boundry"]
+position = Vector2(-0.153399, -84.8565)
+scale = Vector2(1, 1)
+shape = SubResource("SegmentShape2D_hydb7")
+
+[node name="bottom" type="CollisionShape2D" parent="map/Boundry"]
+rotation = -1.5708
+shape = SubResource("SegmentShape2D_hydb7")
+
+[node name="right" type="CollisionShape2D" parent="map/Boundry"]
+position = Vector2(174.414, 0.893226)
+rotation = -1.5708
+shape = SubResource("SegmentShape2D_hydb7")
+
+[node name="left" type="CollisionShape2D" parent="map/Boundry"]
+position = Vector2(0.306797, 0)
+scale = Vector2(1, 1)
+shape = SubResource("SegmentShape2D_hydb7")
+
+[node name="eneimy" type="Area2D" parent="." groups=["interactable"]]
+scale = Vector2(0.993066, 1)
+collision_mask = 2
+script = ExtResource("4_hydb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="eneimy"]
+position = Vector2(671, 403)
+shape = SubResource("CircleShape2D_hydb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="eneimy"]
+position = Vector2(670.65, 401)
+texture = ExtResource("2_pj2xp")
