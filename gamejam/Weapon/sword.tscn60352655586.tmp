@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://baqgqsy3ixctx"]
+
+[ext_resource type="Script" uid="uid://dkkefubjpsnhu" path="res://Weapon/Scripts/sword.gd" id="1_tv6f3"]
+[ext_resource type="Texture2D" uid="uid://bcsbvkh776a25" path="res://Weapon/Sprites/Fallens_Sword.png" id="2_f3imx"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tv6f3"]
+a = Vector2(-41, -39)
+b = Vector2(35, 37)
+
+[node name="sword" type="Node2D"]
+position = Vector2(-14, -14)
+rotation = 3.14159
+scale = Vector2(2.55966, 1.69707)
+script = ExtResource("1_tv6f3")
+metadata/equipped = false
+
+[node name="sword" type="CharacterBody2D" parent="."]
+position = Vector2(-34, -36)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword"]
+shape = SubResource("SegmentShape2D_tv6f3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-37, -37)
+texture = ExtResource("2_f3imx")

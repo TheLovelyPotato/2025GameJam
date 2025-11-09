@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cvpdd0kofftpp"]
+
+[ext_resource type="Texture2D" uid="uid://dxa7fopaxx27k" path="res://Weapon/Sprites/swordV2.png" id="1_b8w2j"]
+[ext_resource type="Script" uid="uid://ciu1xs0j4xw10" path="res://Weapon/Scripts/item.gd" id="2_mnrc5"]
+
+[resource]
+script = ExtResource("2_mnrc5")
+name = "test"
+texture = ExtResource("1_b8w2j")
+damage = 0.0
+icon = ExtResource("1_b8w2j")
+animation = ""
+projectile = 0
+metadata/_custom_type_script = "uid://ciu1xs0j4xw10"
