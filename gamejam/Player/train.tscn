@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://b8rb3k0k54c6m"]
+[gd_scene load_steps=139 format=3 uid="uid://b8rb3k0k54c6m"]
 
 [ext_resource type="Script" uid="uid://nyp4sgepucwk" path="res://Player/Scripts/player.gd" id="1_gb6lh"]
 [ext_resource type="Texture2D" uid="uid://cmnho07c5g16h" path="res://Player/baseSmallSetWalkCycleDW-Sheet.png" id="2_e0f6p"]
@@ -22,6 +22,23 @@
 [ext_resource type="Texture2D" uid="uid://y1eov7eockmw" path="res://Spouses/Sprites/cultist_walk-Sheet.png" id="20_g7qcg"]
 [ext_resource type="Texture2D" uid="uid://c62m0q88inbsa" path="res://Spouses/Sprites/mainCharWalkCycleRW-Sheet.png" id="21_b887c"]
 [ext_resource type="Texture2D" uid="uid://cpgepyymh24ly" path="res://Spouses/Sprites/train_cundoctore_walk-Sheet.png" id="22_6mdjc"]
+[ext_resource type="Texture2D" uid="uid://dmtggowaufck8" path="res://opning/Opening_Cutscene1.jpg" id="23_xtx7r"]
+[ext_resource type="Texture2D" uid="uid://bfdphv17emp87" path="res://opning/Opening_Cutscene2.jpg" id="24_udrkb"]
+[ext_resource type="Texture2D" uid="uid://pdcd1p8iohs4" path="res://opning/Opening_Cutscene3.jpg" id="25_nv7l3"]
+[ext_resource type="Texture2D" uid="uid://dmskj8q0lsot3" path="res://opning/Opening_Cutscene4.jpg" id="26_tw2ij"]
+[ext_resource type="Texture2D" uid="uid://cn42mrdkevp6h" path="res://opning/Opening_Cutscene5.jpg" id="27_xywdv"]
+[ext_resource type="Texture2D" uid="uid://d3yfwekdp7ems" path="res://opning/Opening_Cutscene6.jpg" id="28_enf1y"]
+[ext_resource type="Texture2D" uid="uid://b08vrvbqml2h1" path="res://opning/Opening_Cutscene8.jpg" id="29_2gu8e"]
+[ext_resource type="Texture2D" uid="uid://bawpjvioops08" path="res://opning/Opening_Cutscene9.jpg" id="30_404a0"]
+[ext_resource type="Texture2D" uid="uid://jggyylmlyc7l" path="res://opning/Opening_Cutscene10.jpg" id="31_s7frc"]
+[ext_resource type="Texture2D" uid="uid://b7s0puw25lqfa" path="res://opning/Opening_Cutscene11.jpg" id="32_gx2x0"]
+[ext_resource type="Texture2D" uid="uid://cgbxuo5ec6qt6" path="res://opning/Opening_Cutscene12.jpg" id="33_yqh5h"]
+[ext_resource type="Texture2D" uid="uid://evkcrow73acs" path="res://opning/Opening_Cutscene13.jpg" id="34_jo12a"]
+[ext_resource type="Texture2D" uid="uid://uo8q8647540y" path="res://Spouses/Models/cat.png" id="35_a31ne"]
+[ext_resource type="Script" uid="uid://bpl8xutggpv2l" path="res://Player/intro.gd" id="35_udrkb"]
+[ext_resource type="Texture2D" uid="uid://bnbp5n6i2bg4h" path="res://Spouses/Models/tirerd.png" id="36_4f7ar"]
+[ext_resource type="Texture2D" uid="uid://b2o44dn22usk" path="res://Spouses/Models/trani_cunductor.png" id="37_sioks"]
+[ext_resource type="Texture2D" uid="uid://cx4xx23xt1fde" path="res://Spouses/Models/Untitled_Artwork.png" id="38_uxrbc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ntw2x"]
 atlas = ExtResource("2_e0f6p")
@@ -739,6 +756,50 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_8kot0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_xtx7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_udrkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_nv7l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_tw2ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xywdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_enf1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_2gu8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_404a0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_s7frc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_gx2x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_yqh5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_jo12a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.25
+}]
+
 [node name="Train" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
@@ -916,3 +977,32 @@ sprite_frames = SubResource("SpriteFrames_0b3sx")
 position = Vector2(-1, 20)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_wwupp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+top_level = true
+position = Vector2(579, 325)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_8kot0")
+script = ExtResource("35_udrkb")
+
+[node name="poster" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="poster"]
+position = Vector2(862, 156)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("35_a31ne")
+
+[node name="Sprite2D2" type="Sprite2D" parent="poster"]
+position = Vector2(641, 139)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("36_4f7ar")
+
+[node name="Sprite2D3" type="Sprite2D" parent="poster"]
+position = Vector2(491, 139)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("37_sioks")
+
+[node name="Sprite2D4" type="Sprite2D" parent="poster"]
+position = Vector2(240, 144)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("38_uxrbc")
