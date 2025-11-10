@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://c7dsr4eg3d6ey"]
+
+[ext_resource type="Script" uid="uid://by6o3pfu1d30a" path="res://top.gd" id="1_58ij3"]
+[ext_resource type="Texture2D" uid="uid://c3mua6au0lp14" path="res://Enviroment/trees_background-Sheet.png" id="1_on2c2"]
+[ext_resource type="Texture2D" uid="uid://b76q34buykug2" path="res://Enviroment/roof.png" id="2_58ij3"]
+[ext_resource type="PackedScene" uid="uid://b7yadv7x7el3e" path="res://Scenes/player.tscn" id="4_2exal"]
+[ext_resource type="Texture2D" uid="uid://dpoax2yseyjex" path="res://Enviroment/hatch.png" id="5_edsjh"]
+[ext_resource type="Script" uid="uid://r4gsebp42ymg" path="res://hatch.gd" id="6_ch5ua"]
+[ext_resource type="PackedScene" uid="uid://cx1kmr0ks645" path="res://Enemy/Scripts/eniemy1.tscn" id="7_ql50d"]
+[ext_resource type="Texture2D" uid="uid://7jp0w85oo74e" path="res://Weapon/Sprites/muscle_cat_patten.png" id="8_7c27k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2exal"]
+atlas = ExtResource("1_on2c2")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edsjh"]
+atlas = ExtResource("1_on2c2")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch5ua"]
+atlas = ExtResource("1_on2c2")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql50d"]
+atlas = ExtResource("1_on2c2")
+region = Rect2(576, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7c27k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2exal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edsjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch5ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql50d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2exal"]
+a = Vector2(-0.613595, 0.893219)
+b = Vector2(175.641, 0.446609)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch5ua"]
+
+[node name="top" type="Node2D"]
+script = ExtResource("1_58ij3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(582, 31)
+scale = Vector2(6, 4)
+sprite_frames = SubResource("SpriteFrames_7c27k")
+frame_progress = 0.798745
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(-1.5, 72.25)
+scale = Vector2(1, 1.5)
+texture = ExtResource("2_58ij3")
+
+[node name="Player" parent="." instance=ExtResource("4_2exal")]
+position = Vector2(1045, 269)
+
+[node name="Boundry" type="StaticBody2D" parent="."]
+position = Vector2(-303, 759)
+scale = Vector2(10.8838, 7.48669)
+
+[node name="top" type="CollisionShape2D" parent="Boundry"]
+position = Vector2(23.705, -70.258)
+shape = SubResource("SegmentShape2D_2exal")
+
+[node name="bottom" type="CollisionShape2D" parent="Boundry"]
+position = Vector2(26.3695, 6.27781)
+rotation = -1.5708
+shape = SubResource("SegmentShape2D_2exal")
+
+[node name="right" type="CollisionShape2D" parent="Boundry"]
+position = Vector2(133.226, 0.66785)
+rotation = -1.5708
+shape = SubResource("SegmentShape2D_2exal")
+
+[node name="left" type="CollisionShape2D" parent="Boundry"]
+position = Vector2(-0.918791, -16.0284)
+shape = SubResource("SegmentShape2D_2exal")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1075, 313)
+texture = ExtResource("5_edsjh")
+offset = Vector2(-50, -50)
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(-36, 15)
+scale = Vector2(10, 7)
+script = ExtResource("6_ch5ua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("RectangleShape2D_ch5ua")
+
+[node name="CharacterBody2D" parent="Sprite2D" instance=ExtResource("7_ql50d")]
+position = Vector2(-869, 102)
+
+[node name="patent" type="Sprite2D" parent="."]
+position = Vector2(295, 344)
+rotation = -0.598648
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_7c27k")

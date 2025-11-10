@@ -22,4 +22,4 @@ func _process(delta: float) -> void:
 		interaction()
 
 func interaction() -> void:
-	get_tree().change_scene_to_file("res://top.tscn")
+	get_tree().change_scene_to_file("res://Player/train.tscn")
